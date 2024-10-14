@@ -1,10 +1,11 @@
 import { Component, ReactNode } from "react";
+import Header from "./Header";
 
 class Todo extends Component {
   render(): ReactNode {
     return (
       <div>
-        <h1>Todo</h1>
+        <Header name='Tarefas' small='Cadastro'></Header>
       </div>
     );
   }

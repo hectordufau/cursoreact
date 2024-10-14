@@ -1,14 +1,15 @@
+import { BrowserRouter } from "react-router-dom";
 import "./App.css";
-import About from "./components/About";
 import Menu from "./components/Menu";
-import Todo from "./components/Todo";
+import Content from "./Content";
 
 const App = () => {
   return (
     <div className="container">
-      <Menu />
-      <Todo />
-      <About />
+      <BrowserRouter>
+        <Menu />
+        <Content />
+      </BrowserRouter>
     </div>
   );
 };
