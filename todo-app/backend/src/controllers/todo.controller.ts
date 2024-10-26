@@ -24,7 +24,19 @@ const createTodo = async (req: Request, res: Response) => {
 
 // Get all Todos
 const getTodos = async (req: Request, res: Response) => {
-    const todo = await prisma.todo.findMany();
+    const { query } = req;
+    const description = (typeof query.description === "string") ? query.description : "";
+    const todo = await prisma.todo.findMany({
+        where: {
+            description: {
+                startsWith: description
+            }
+        },
+        orderBy: {
+            createdAt: 'desc'
+        },
+
+    });
 
     res.status(201).json({
         status: true,
@@ -103,7 +115,7 @@ const updateTodo = async (req: Request, res: Response) => {
 
         const updatedTodo = await prisma.todo.update({
             where: {
-                id: todoid,
+                id: todo?.id,
             },
             data: req.body,
         });
