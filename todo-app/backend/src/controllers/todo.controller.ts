@@ -113,6 +113,9 @@ const updateTodo = async (req: Request, res: Response) => {
             });
         }
 
+        //console.log(todo)
+        //console.log(req.body)
+
         const updatedTodo = await prisma.todo.update({
             where: {
                 id: todo?.id,
